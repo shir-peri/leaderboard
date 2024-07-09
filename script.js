@@ -1,6 +1,6 @@
-const SHEET_ID = '2PACX-1vRWI9BosPgGwA2xU0qs-VJN3IKDTKK9nALd-S5kFswaNDCqG29aXg20q9KeyLnt5aKEtcX9OvMTExu5/pubhtml';
+const SHEET_ID = '2PACX-1vRWI9BosPgGwA2xU0qs-VJN3IKDTKK9nALd-S5kFswaNDCqG29aXg20q9KeyLnt5aKEtcX9OvMTExu5';
 const SHEET_NAME = 'Sheet1';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`;  
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv`;
 
 function calculateTotalPoints(answers, upvotes) {
     return answers * 10 + upvotes * 2;
@@ -30,9 +30,12 @@ function fetchLeaderboardData() {
         download: true,
         header: true,
         complete: function(results) {
+            console.log("Fetched data:", results.data);
             const data = results.data.map(row => ({
-                ...row,
-                'Total Points': calculateTotalPoints(parseInt(row.Answers), parseInt(row.Upvotes))
+                Username: row.Username,
+                Answers: parseInt(row.Answers) || 0,
+                Upvotes: parseInt(row.Upvotes) || 0,
+                'Total Points': calculateTotalPoints(parseInt(row.Answers) || 0, parseInt(row.Upvotes) || 0)
             }));
             updateLeaderboard(data);
         }
