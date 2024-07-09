@@ -1,4 +1,4 @@
-const SHEET_ID = 'e/2PACX-1vRWI9BosPgGwA2xU0qs-VJN3IKDTKK9nALd-S5kFswaNDCqG29aXg20q9KeyLnt5aKEtcX9OvMTExu5/pubhtml';
+const SHEET_ID = '2PACX-1vRWI9BosPgGwA2xU0qs-VJN3IKDTKK9nALd-S5kFswaNDCqG29aXg20q9KeyLnt5aKEtcX9OvMTExu5/pubhtml';
 const SHEET_NAME = 'Sheet1';
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`;  
 
